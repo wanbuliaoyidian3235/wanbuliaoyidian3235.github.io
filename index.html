@@ -1,0 +1,164 @@
+<!--ECHO ���ڴ�״̬�� -->
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        body {
+            background-color: #f4f1eb; /* 这里设置为淡米色 */
+            color: #000; /* 设置文本颜色为黑色 */
+            font-family: 'Times New Roman', Times, serif; /* 设置字体 */
+            text-align: center; /* 使文本居中 */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 72px; /* 设置标题字体大小 */
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px; /* 设置段落字体大小 */
+            font-size: 18px; /* 设置段落字体大小 */
+            margin-top: 5px; /* 设置段落上方的外边距 */
+            margin-bottom: 20px; /* 设置段落下方的外边距 */
+            /* 没有设置color属性，会继承body的默认颜色 */
+        }
+        
+        .search-wrapper {
+            /* 添加其他样式 */
+        }
+        .logo-and-wordmark .logo {
+            display: inline-block;
+            height: 82px;
+            width: 82px;
+            background: image-set(url("chrome://branding/content/about-logo.png"), url("chrome://branding/content/about-logo@2x.png") 2x) no-repeat center;
+            background-size: 82px;
+        }
+
+
+        .button {
+            padding: 10px 20px;
+            background-color: #000; /* 按钮背景颜色 */
+            color: #fff; /* 按钮文本颜色 */
+            border: none;
+            cursor: pointer;
+            width: 200px; /* 设置按钮宽度 */
+        }
+
+        .icons {
+            position: absolute; /* 绝对定位 */
+            top: 20px; /* 距离顶部20px */
+            right: 20px; /* 距离右侧20px */
+            display: flex; /* 使用flex布局 */
+            gap: 15px; /* 设置图标之间的间距 */
+        }
+        .icons a {
+            display: block; /* 使链接成为块级元素 */
+            width: 32px; /* 设置图标宽度 */
+            height: 32px; /* 设置图标高度 */
+            background-size: cover; /* 背景图片大小适应容器 */
+        }
+
+        .icons a.github {
+            background-image: url('image/githubicon.svg'); /* 设置GitHub图标背景图片 */
+        }
+        .icons a.instagram {
+            background-image: url('image/instagramicon.svg'); /* 设置Instagram图标背景图片 */
+        }
+        .icons a.tiktok {
+            background-image: url('image/tiktokicon.svg'); /* 设置TikTok图标背景图片 */
+        }
+
+        .overlay {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.26); /* 灰色半透明覆盖 */
+            justify-content: center;
+            align-items: center;
+            z-index: 999; /* 确保覆盖在最上层 */
+        }
+        .overlay .modal {
+            background-color: #f4f1eb;
+            padding: 20px;
+            border: 4px solid #000;
+            width: 500px;
+            height: 250px;
+            text-align: center;
+            position: relative;
+            display: flex; /* 使用flex布局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            flex-direction: column; /* 使内容垂直排列 */
+        }
+        .overlay .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="icons">
+        <a href="https://github.com/wanbuliaoyidian3235" target="_blank" class="github" title="GitHub"></a>
+        <a href="https://www.instagram.com/wanbuliaoyidian_3235/" target="_blank" class="instagram" title="Instagram"></a>
+        <a href="#" target="_blank" class="tiktok" title="tiktok"></a>
+    </div>
+    
+    <div class="search-wrapper">
+        <h1>THIS IS THE TITLE</h1>
+        <p>djhfksjdhf</p>
+        <button class="button" onclick="window.location.href='menu/menuindex.html'">cook!</button>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <span class="close" id="closeModal">&times;</span>
+            <h3>oops!</h3>
+            <p> IT'S FAKE! </p>
+            <p> I don't have tk. Maybe I will update this link when I have one. </p>
+        </div>
+    </div>
+
+
+    <script>
+        // JavaScript code to handle search functionality
+
+    </script>
+
+    <script>
+        document.querySelector('.tiktok').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('overlay').style.display = 'flex';
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+        });
+
+        document.getElementById('overlay').addEventListener('click', function(event) {
+            if (event.target === this) {
+                document.getElementById('overlay').style.display = 'none';
+            }
+        });
+    </script>
+
+    
+</body>
+</html>
