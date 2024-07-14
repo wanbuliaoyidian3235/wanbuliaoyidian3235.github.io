@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,7 +28,6 @@
 
         p {
             font-size: 18px; /* 设置段落字体大小 */
-            font-size: 18px; /* 设置段落字体大小 */
             margin-top: 5px; /* 设置段落上方的外边距 */
             margin-bottom: 20px; /* 设置段落下方的外边距 */
             margin-left: 2px;
@@ -42,7 +41,6 @@
             width: 82px;
         }
 
-
         .button {
             padding: 10px 20px;
             background-color: #000; /* 按钮背景颜色 */
@@ -51,6 +49,7 @@
             cursor: pointer;
             width: 200px; /* 设置按钮宽度 */
             height: 45px;
+            position: relative; /* 确保定位可以计算 */
         }
 
         .icons {
@@ -109,8 +108,19 @@
             cursor: pointer;
             font-size: 18px;
         }
-
-
+        .page {
+            /* 黑色转场动画 */
+            display: none; /* 默认隐藏 */
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000; /* 设置背景颜色为黑色 */
+            clip-path: circle(0% at 50% 50%); /* 初始clip-path设置为圆形，半径为0 */
+        }
     </style>
 </head>
 <body>
@@ -123,7 +133,10 @@
     <div class="search-wrapper">
         <h1>THIS IS THE TITLE</h1>
         <p>djhfksjdhf</p>
-        <button class="button" onclick="window.location.href='menu/menuindex.html'">cook!</button>
+        
+    </div>
+    <div class="search-wrapper">
+        <button class="button" id="cookButton">cook!</button>
     </div>
 
     <div class="overlay" id="overlay">
@@ -134,6 +147,8 @@
             <p> I don't have tk. Maybe I will update this link when I have one. </p>
         </div>
     </div>
+
+    <div class="page" id="transitionPage"></div>
 
     <script>
         document.querySelector('.tiktok').addEventListener('click', function(event) {
@@ -150,8 +165,40 @@
                 document.getElementById('overlay').style.display = 'none';
             }
         });
-    </script>
 
-    
+        document.getElementById('cookButton').addEventListener('click', function(event) {
+            startAnimation(event);
+        });
+
+        function startAnimation(event) {
+            var button = event.target;
+            var rect = button.getBoundingClientRect();
+            var x = rect.left + rect.width / 2;
+            var y = rect.top + rect.height / 2;
+
+            var page = document.getElementById('transitionPage');
+            var zIndex = 1;
+
+            page.style.display = 'flex';
+            page.style.zIndex = ++zIndex;
+
+            var start = null;
+
+            function animateClipPath(timestamp) {
+                if (!start) start = timestamp;
+                var progress = timestamp - start;
+                var radius = Math.min(progress / 5, 200);
+                page.style.clipPath = 'circle(' + radius + '% at ' + x + 'px ' + y + 'px)';
+
+                if (radius < 135) {
+                    requestAnimationFrame(animateClipPath);
+                } else {
+                    window.location.href = 'menu2/menu.html';
+                }
+            }
+
+            requestAnimationFrame(animateClipPath);
+        }
+    </script>
 </body>
 </html>
