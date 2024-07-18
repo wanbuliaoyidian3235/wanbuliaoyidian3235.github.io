@@ -1,0 +1,13 @@
+body {
+    background-color: #000; /* 这里设置为淡米色 */
+    color: #f4f1eb; /* 设置文本颜色为黑色 */
+    font-family: 'Times New Roman', Times, serif; /* 设置字体 */;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInItem 1s ease-in-out forwards;
+}

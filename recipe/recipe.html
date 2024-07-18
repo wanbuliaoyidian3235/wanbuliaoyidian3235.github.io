@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe</title>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f1eb;
+    }
+    .search-container {
+        padding: 20px;
+        text-align: center;
+    }
+    .search-box {
+        width: 60%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    .emoji-button {
+        padding: 10px;
+        background: none;
+        border: none;
+        font-size: 32px;
+        cursor: pointer;
+        position: relative;
+        top: 7px;
+    }
+    .recipe-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .recipe-card {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        width: 80%;
+        margin: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    @media (min-width: 600px) {
+        .recipe-card {
+            flex-direction: row;
+            align-items: flex-start;
+        }
+        .recipe-info {
+            margin-left: 20px;
+        }
+    }
+    .recipe-image {
+        width: 100%;
+        max-width: 186px; /* Resize the image */
+    }
+
+    #transitionPage {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 9999;
+        clip-path: circle(150% at 50% 50%);
+        transition: clip-path 1.4s ease-in-out;
+    }
+</style>
+</head>
+<body>
+<div id="transitionPage"></div>
+<div class="search-container">
+    <form action="#" method="GET" onsubmit="searchRecipes(event)">
+        <input type="text" placeholder="Search the recipe that you are interested in" class="search-box" name="search">
+        <button type="submit" class="emoji-button">👩‍🍳</button>
+    </form>
+</div>
+
+<div class="recipe-container" id="recipeContainer"></div>
+
+<script>
+let recipes = [];
+
+async function fetchRecipes() {
+    const response = await fetch('recipe.json'); // Ensure the path to your JSON file is correct
+    recipes = await response.json();
+    displayRecipes(recipes);
+}
+
+function displayRecipes(recipesToDisplay) {
+    const container = document.getElementById('recipeContainer');
+    container.innerHTML = ''; // Clear previous results
+    recipesToDisplay
+        .sort((a, b) => a.name.localeCompare(b.name))
+        
+        .forEach(recipe => {
+            const card = document.createElement('div');
+            card.className = 'recipe-card';
+            card.innerHTML = `
+                <img src="${recipe.imagePath}" alt="Image of ${recipe.name}" class="recipe-image">
+                <div class="recipe-info">
+                    <p>Total time: ${recipe.overallTime}</p>
+                    <p>ovenneeded: ${recipe.ovenneeded}</p>
+                    <h3>${recipe.name}</h3>
+                    <p>Ingredients: ${recipe.ingredients.join(', ')}</p>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+}
+
+function searchRecipes(event) {
+    event.preventDefault();
+    const searchTerm = event.target.elements.search.value.toLowerCase();
+    const filteredRecipes = recipes.filter(recipe => recipe.name.toLowerCase().includes(searchTerm));
+    displayRecipes(filteredRecipes);
+}
+
+function startAnimation() {
+    var page = document.getElementById('transitionPage');
+    page.style.display = 'block';
+
+    setTimeout(() => {
+        page.style.clipPath = 'circle(0% at 50% 50%)';
+    }, 1);
+
+    setTimeout(() => {
+        page.style.display = 'none';
+    }, 1400); // 动画持续时间 1 秒
+}
+
+window.onload = function() {
+    fetchRecipes();
+    startAnimation();
+};
+</script>
+
+</body>
+</html>

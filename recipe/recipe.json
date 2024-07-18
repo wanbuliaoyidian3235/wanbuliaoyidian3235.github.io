@@ -1,0 +1,57 @@
+[
+    {
+        "name": "chocolate muffin",
+        "ingredients": ["黄油90g", "糖50g", "鸡蛋2个", "牛奶160g", "低筋面粉160g", "玉米淀粉40g", "奶粉20g", "泡打粉8g", "可可粉35g", "巧克力豆40g"],
+        "ovenneeded": true,
+        "overall time": "30min",
+        "imagePath": "pic/defaultpic.webp"
+    },
+
+    {
+        "name": "earl grey cookie",
+        "ingredients": ["黄油120g", "糖粉50g", "淡奶油100g", "低筋面粉180g", "伯爵红茶3g"],
+        "ovenneeded": true,
+        "overall time": "25 mins",
+        "imagePath": "pic/earl_grey_cookie.png"
+    },
+
+    {
+        "name": "macaron",
+        "ingredients": ["杏仁粉53g", "糖粉53g", "蛋白43g", "糖59g", "水40g"],
+        "ovenneeded": true,
+        "overall time": "10 mins",
+        "imagePath": "pic/macaron.png"
+    },
+    
+    {
+        "name": "tiramisu",
+        "ingredients": ["蛋黄3个", "糖50g", "马斯卡彭250g","淡奶油200g","咖啡力娇酒10ml","可可粉30g"],
+        "ovenneeded": false,
+        "overall time": "1 night",
+        "imagePath": "pic/tiramisu.png"
+    },
+
+    {
+        "name": "name64",
+        "ingredients": ["黄油90g", "糖50g", "鸡蛋2个","牛奶160g","低筋面粉160g","玉米淀粉40g","奶粉20g","泡打粉8g","可可粉35g","巧克力豆40g"],
+        "ovenneeded": true,
+        "overall time": "xx mins",
+        "imagePath": "pic/defaultpic.webp"
+    },
+
+    {
+        "name": "name69",
+        "ingredients": ["黄油90g", "糖50g", "鸡蛋2个","牛奶160g","低筋面粉160g","玉米淀粉40g","奶粉20g","泡打粉8g","可可粉35g","巧克力豆40g"],
+        "ovenneeded": true,
+        "overall time": "xx mins",
+        "imagePath": "pic/defaultpic.webp"
+    },
+
+    {
+        "name": "name5",
+        "ingredients": ["黄油90g", "糖50g", "鸡蛋2个","牛奶160g","低筋面粉160g","玉米淀粉40g","奶粉20g","泡打粉8g","可可粉35g","巧克力豆40g"],
+        "ovenneeded": false,
+        "overall time": "xx mins",
+        "imagePath": "pic/defaultpic.webp"
+    }
+]
